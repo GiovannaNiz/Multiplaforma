@@ -1,0 +1,12 @@
+<resources>
+    <color name="primaryColor">#6200EE</color>
+    <color name="secondaryColor">#03DAC5</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#FFFFFF</color>
+    <color name="startColor">#28A745</color>
+    <color name="endColor">#007BFF</color>
+    <color name="darkGray">#555555</color>
+    <color name="white">#FFFFFF</color>
+    <color name="lightGray">#DDDDDD</color>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "101327235951",
+    "project_id": "temperatura-21a30",
+    "storage_bucket": "temperatura-21a30.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101327235951:android:6bdb573c750441ec1b969a",
+        "android_client_info": {
+          "package_name": "com.example.sensortemperaturaumidade"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxErkMGHZ7VdS8ke3D2vvueLK2dysem6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
