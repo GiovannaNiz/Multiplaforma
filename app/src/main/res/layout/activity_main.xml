@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -6,7 +7,6 @@
     android:padding="16dp"
     android:background="@color/backgroundColor">
 
-    <!-- Título principal -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,25 +17,22 @@
         android:gravity="center"
         android:layout_marginBottom="50dp" />
 
-    <!-- Container para TextView e EditText -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginBottom="16dp">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Selecione uma data"
             android:textSize="16sp"
             android:textColor="@color/textColorPrimary" />
-
         <EditText
-            android:id="@+id/dataHoraInput"
+            android:id="@+id/dataInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/dd_mm_aaaa"
+            android:hint="YYYY-MM-DD"
             android:inputType="none"
             android:drawableEnd="@drawable/ic_calendar"
             android:backgroundTint="@color/secondaryColor"
@@ -43,7 +40,28 @@
             android:padding="8dp" />
     </LinearLayout>
 
-    <!-- Botões -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecione uma hora"
+            android:textSize="16sp"
+            android:textColor="@color/textColorPrimary" />
+        <EditText
+            android:id="@+id/horaInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="HH:MM:SS"
+            android:inputType="none"
+            android:backgroundTint="@color/secondaryColor"
+            android:textColor="@color/textColorPrimary"
+            android:padding="8dp" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/verificarButton"
         android:layout_width="match_parent"
@@ -64,7 +82,6 @@
         android:textColor="@color/textColorSecondary"
         android:padding="12dp" />
 
-    <!-- Resultado -->
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="match_parent"

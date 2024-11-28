@@ -2,15 +2,11 @@ package com.example.sensortemperaturaumidade
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
-import java.text.SimpleDateFormat
-import java.util.Locale
-import java.util.TimeZone
 
 class ListarTodosActivity : ComponentActivity() {
     private lateinit var recyclerView: RecyclerView
@@ -35,24 +31,29 @@ class ListarTodosActivity : ComponentActivity() {
     }
 
     private fun buscarTodos() {
-        db.collection("temperaturaUmidade")
-            .orderBy("dataHora", Query.Direction.DESCENDING)
+        db.collection("SensorData")
+            .orderBy("date", Query.Direction.DESCENDING) // Certifique-se que "date" e "time" são os nomes corretos no Firestore
             .get()
             .addOnSuccessListener { querySnapshot ->
                 val sensorDataList = mutableListOf<SensorData>()
-                val dateTimeFormat = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.getDefault())
-                dateTimeFormat.timeZone = TimeZone.getTimeZone("America/Sao_Paulo")
 
                 for (document in querySnapshot.documents) {
-                    val dataHora = document.getTimestamp("dataHora")?.toDate()
-                    val temperatura = document.getString("temperatura") ?: "N/A"
-                    val umidade = document.getString("umidade") ?: "N/A"
+                    val date = document.getString("date") ?: "Data indisponível"
+                    val time = document.getString("time") ?: "Hora indisponível"
+                    val temp = document.getString("temp") ?: "N/A"
+                    val hmd = document.getString("hmd") ?: "N/A"
 
-                    val dataFormatada = if (dataHora != null) dateTimeFormat.format(dataHora) else "Data indisponível"
-                    sensorDataList.add(SensorData(dataFormatada, temperatura, umidade))
+                    sensorDataList.add(SensorData("$date $time", temp, hmd))
                 }
 
-                recyclerView.adapter = SensorDataAdapter(sensorDataList)
+                if (sensorDataList.isEmpty()) {
+                    recyclerView.adapter = SensorDataAdapter(emptyList()) // Caso não haja dados
+                } else {
+                    recyclerView.adapter = SensorDataAdapter(sensorDataList)
+                }
+            }
+            .addOnFailureListener { exception ->
+                recyclerView.adapter = SensorDataAdapter(emptyList())
             }
     }
 }
